@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Assessment</title>
+</head>
+<style>
+    body {
+        height: 100%;
+        margin: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: yellowgreen;
+
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 400px;
+        height: 600px;
+        border: 2px solid gray;
+        margin-top: 100px;
+        padding: 20px;
+
+    }
+    .container h1{
+        border: 1px solid black;
+        padding: 5px;
+        border-radius: 10%;
+    }
+
+    #diceContainer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+    #diceContainer div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #diceContainer img {
+        margin: 10px 0;
+    }
+    #dice2 h1{
+        margin-top: 0;
+    }
+    #Edit-btn{
+        font-size: 20px;
+        background-color:lightgreen;
+        padding: 10px 20px;
+        border-radius: 10%;
+    }
+    #play-btn{
+        font-size: 20px;
+        background-color:lightgreen;
+        padding: 10px 20px;
+        border-radius: 10%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Lets play game </h1>
+        <br>
+        <div id="diceContainer">
+            <div id="dice1">
+                <h1 id="player1">Player 1</h1>
+                <img  id="image1" src="images/6.png" height="100px">
+                <h2 id="root"> </h2>
+                <input  id="player1Input" type="text" style="display:none;">
+            </div>
+            <div id="dice2">  
+                <h1 id="player2">Player 2</h1>
+                <img  id="image2" src="images/6.png" height="100px">
+                <h2 id="root2"></h2>
+                <input  id="player2Input" type="text" style="display:none;">
+            </div>
+        </div>
+        <h2 id="result"></h2>
+        <button onclick="EditName()" id="Edit-btn">Edit name</button>
+        <br>
+        <button onclick="GuessNumber()" id="play-btn">Play</button>
+    </div>
+    <script>
+        function EditName(){
+            let player1Name=document.getElementById("player1")
+            let player2Name=document.getElementById("player2")
+            let player1NameUpdate=prompt("Enter name of player 1" )
+            player1Name.innerText= player1NameUpdate;
+            let player2NameUpdate=prompt("Enter name of player 2" )
+            player2Name.innerText= player2NameUpdate;
+
+           
+        }
+        
+
+        function GuessNumber() {
+            let num1 = Math.floor(Math.random() * 6 + 1)
+            let num2 = Math.floor(Math.random() * 6 + 1)
+            root.innerHTML = num1
+            root2.innerHTML = num2
+            let image1Url ="images/"+ num1 +".png";
+            let image1=document.getElementById("image1")
+            image1.src=image1Url;
+            let image2Url ="images/"+ num2 +".png";
+            let image2=document.getElementById("image2")
+            image2.src=image2Url;
+
+
+            if (num1 > num2) {
+                player1NameR=document.getElementById("player1").innerText
+                player2NameR=document.getElementById("player2").innerText
+                result.innerHTML =  player1NameR+ " is winner"
+
+            }
+            if (num1 < num2) {
+                result.innerHTML =  player2NameR+ " is winner"
+
+            }
+            if (num1 == num2) {
+                result.innerHTML = "Tied"
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
